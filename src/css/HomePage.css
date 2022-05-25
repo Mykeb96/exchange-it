@@ -1,0 +1,162 @@
+.homepage-container {
+    width: 100vw;
+}
+
+#main-title {
+    color: rgb(159, 233, 255);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding-top: 1vh;
+    text-transform: uppercase;
+    letter-spacing: 12px;
+    
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.dropdown-item {
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.dropdown input {
+    background: rgb(159, 233, 255);
+    border-radius: 40px;
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 10px;
+    border: 2px solid white;
+    text-transform: uppercase;
+}
+
+.dropdown-item:hover {
+    transition: 0.3s;
+    background: rgb(159, 233, 255);
+    border-radius: 4px;
+    transform: translateX(10px);
+    color: black;
+    font-weight: bold;
+}
+
+.dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+
+}
+
+#currency-list {
+    margin: 0;
+    padding: 0;
+    width: 250px;
+}
+
+.dropdown {
+    display: flex;
+    justify-content: center;
+    padding-left: 5vw;
+    padding-right: 5vw;
+
+}
+
+.currency-search {
+    display: flex;
+    justify-content: center;
+    padding-top: 20vh;
+    margin: 0;
+    align-items: baseline;
+
+}
+
+.exchange-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 7vh;
+}
+
+form button {
+    padding-top: 50px;
+    background: transparent;
+    border: none;
+}
+
+form button img:hover {
+    cursor: pointer;
+}
+
+form p {
+    padding-top: 20px;
+    white-space: nowrap;
+    font-weight: bold;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    font-size: 25px;
+}
+
+.exchange-info h4 {
+    white-space: nowrap;
+    font-weight: bold;
+    text-align: center;
+    width: 133px;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+.currency-amount-input {
+    background: rgb(159, 233, 255);
+    border-radius: 40px;
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 10px;
+    border: 2px solid white;
+}
+
+::placeholder {
+    color: rgba(90, 90, 90, 0.459);
+    /* text-transform: uppercase; */
+    text-align: center;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.right-arrow {
+    transform: rotate(180deg);
+    height: 50%;
+    
+}
+
+.conversion-header {
+    display: flex;
+    justify-content: center;
+}
+
+.conversion-header :nth-child(2) {
+    align-self: center;
+}
