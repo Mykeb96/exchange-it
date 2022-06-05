@@ -1,0 +1,31 @@
+.modal-background {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.788);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: linear-gradient(90deg, #11CCF8 50%,  #2289FA 50%);
+    height: 55vh;
+    width: 50vw;
+    position: absolute;
+    top: 25vh;
+    left: 25vw;
+    border: 6px outset rgb(159, 233, 255);
+    box-shadow: 20px 20px rgba(0, 0, 0, 0.411);
+}
+
+.modal-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    /* align-self: center; */
+}

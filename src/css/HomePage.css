@@ -9,15 +9,19 @@
     justify-content: center;
     padding-top: 1vh;
     text-transform: uppercase;
-    letter-spacing: 12px;
+    letter-spacing: 22px;
+    text-shadow: 1px 0 0 #000, 0 1px 0 #000, 0 2px 0 #000, -1px 0 0 #000;
     
 }
 
-#header {
+.header {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+    
     
 }
 
@@ -27,30 +31,36 @@
     flex-direction: column;
     align-items: center;
     padding-top: 15px;
-    color: white;
+    color: black;
     text-decoration: none;
     padding: 5px;
-    margin-top: 10px;
+    
 }
 
 .dropdown input {
     background: rgb(159, 233, 255);
-    border-radius: 40px;
+    border-radius: 10px;
     color: black;
     font-weight: bold;
     font-size: 15px;
     padding: 10px;
     border: 2px solid white;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
+
+    border: 6px outset rgb(159, 233, 255);
+    /* box-shadow: 10px 10px rgba(0, 0, 0, 0.26); */
+    transition: 1s;
+}
+
+.dropdown input:focus {
+    transition: 0.5s;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.26);
 }
 
 .dropdown-item:hover {
     transition: 0.3s;
-    background: rgb(159, 233, 255);
-    border-radius: 4px;
-    transform: translateX(10px);
-    color: black;
-    font-weight: bold;
+    background: rgb(81, 214, 255);
+    font-style: italic;
 }
 
 .dropdown-menu {
@@ -64,78 +74,92 @@
 #currency-list {
     margin: 0;
     padding: 0;
-    width: 250px;
+    width: 300px;
+    background: rgb(159, 233, 255);
+    z-index: 1;
+    border-radius: 8px;
+    margin-top: 1vh;
+    border: 1px solid black;
+    padding-bottom: 1vh;
+    padding-top: 1vh;
+
 }
 
 .dropdown {
     display: flex;
     justify-content: center;
-    padding-left: 5vw;
-    padding-right: 5vw;
+
 
 }
 
 .currency-search {
     display: flex;
     justify-content: center;
-    padding-top: 20vh;
-    margin: 0;
-    align-items: baseline;
+    padding-top: 10vh;
+    margin: 0 auto;
+    /* align-items: baseline; */
+    width: fit-content;
 
 }
 
-.exchange-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    
-}
 
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 7vh;
+    position: absolute; 
+    width: 100vw;
+    bottom: 30vh;
+
+  
+
 }
 
 form button {
-    padding-top: 50px;
+    padding-top: 40px;
     background: transparent;
     border: none;
+    transition: 0.3s;
+}
+
+form button img {
+    border-radius: 50%;
+    transition: 0.3s;
+
 }
 
 form button img:hover {
+    transition: 0.5s;
     cursor: pointer;
+    
+    transform: translateY(-3px);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 form p {
-    padding-top: 20px;
+    padding-top: 5px;
     white-space: nowrap;
     font-weight: bold;
     text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     font-size: 25px;
 }
 
-.exchange-info h4 {
-    white-space: nowrap;
-    font-weight: bold;
-    text-align: center;
-    width: 133px;
-    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
-}
-
 .currency-amount-input {
     background: rgb(159, 233, 255);
-    border-radius: 40px;
+    border-radius: 10px;
     color: black;
     font-weight: bold;
     font-size: 15px;
     padding: 10px;
-    border: 2px solid white;
+    /* border: 2px solid white; */
+    border: 6px outset rgba(159, 233, 255);
+    /* box-shadow: 10px 10px rgba(0, 0, 0, 0.26); */
+    transition: 0.5s;
+}
+
+.currency-amount-input:focus {
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.26);
+    transition: 0.5s;
 }
 
 ::placeholder {
@@ -143,12 +167,13 @@ form p {
     /* text-transform: uppercase; */
     text-align: center;
     font-style: italic;
-    text-transform: uppercase;
+    text-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.034) 0px 4px 2px, rgba(0, 0, 0, 0.034) 0px 8px 4px,rgba(0, 0, 0, 0.041) 0px 16px 8px, rgba(0, 0, 0, 0.034) 0px 32px 16px;
 }
 
 .right-arrow {
     transform: rotate(180deg);
-    height: 50%;
+    height: 100%;
+    margin-top: 9px !important;
     
 }
 
@@ -160,3 +185,4 @@ form p {
 .conversion-header :nth-child(2) {
     align-self: center;
 }
+

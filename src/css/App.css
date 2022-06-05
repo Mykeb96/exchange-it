@@ -1,9 +1,8 @@
-body,
-html {
+html,
+body {
   margin: 0;
   padding: 0;
   height: 100vh;
   width: 100vw;
   background: linear-gradient(90deg, #11CCF8 50%,  #2289FA 50%);
-  background-repeat: repeat;
 }

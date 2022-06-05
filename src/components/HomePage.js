@@ -1,25 +1,33 @@
-import React from 'react'
-import '../../css/HomePage.css'
-import logo from '../../assets/logo.png'
+import React, { useEffect } from 'react'
+import '../css/HomePage.css'
+import logo from '../assets/logo.png'
 import Dropdown from 'react-bootstrap/Dropdown'
 import { FormControl } from 'react-bootstrap'
 import { useState } from 'react'
-import rightArrow from '../../assets/back-arrow.png'
-import transferIcon from '../../assets/transfer.png'
+import rightArrow from '../assets/back-arrow.png'
+import transferIcon from '../assets/transfer.png'
+import Modal from './Modal.js'
 
 
 
 const HomePage = () => {
-    let tradeAmount = '0'
     let data = {}
 
     const [initialCurrency, setInitialCurrency] = useState('')
     const [exchangeCurrency, setExchangeCurrency] = useState('')
     const [newData, setNewData] = useState(null)
+    const [showModal, setShowModal] = useState(false)
+    const [tradeAmount, setTradeAmount] = useState('')
+
+    // for logging the data object
+
+    // useEffect(() => {
+    //   console.log(newData)
+    // },[newData])
 
 
 
-    const exchangeMoney = (tradeAmount) => {
+    const exchangeMoney = () => {
 
         var myHeaders = new Headers()
         myHeaders.append("apikey", "OcqoRyNEMuJXxvPKry6BXkZ0XoLmEyOU")
@@ -30,7 +38,7 @@ const HomePage = () => {
           headers: myHeaders
         }
 
-        if (exchangeCurrency != '' && initialCurrency != '' && tradeAmount != 0) {
+        if (exchangeCurrency != '' && initialCurrency != '' && tradeAmount != '') {
 
           fetch(`https://api.apilayer.com/exchangerates_data/convert?to=${exchangeCurrency}&from=${initialCurrency}&amount=${tradeAmount}`, requestOptions)
           .then(response => response.text())
@@ -39,6 +47,9 @@ const HomePage = () => {
               setNewData(data)
               setExchangeCurrency('')
               setInitialCurrency('')
+              setShowModal(true)
+              
+              
           })
           .catch(error => console.log('error', error));
         } else {
@@ -58,8 +69,7 @@ const HomePage = () => {
 
             >
               <FormControl
-                autoFocus
-                placeholder="Search for currencies"
+                placeholder={initialCurrency != '' ? initialCurrency : 'Search for currencies...'}
                 onChange={(e) => setValue(e.target.value)}
                 value={value}
               />
@@ -74,13 +84,38 @@ const HomePage = () => {
         },
       );
 
+      const CustomMenu2 = React.forwardRef(
+        ({ children }, ref) => {
+          const [value, setValue] = useState('');
+      
+          return (
+            <div className='dropdown-menu'
+
+            >
+              <FormControl
+                placeholder={exchangeCurrency != '' ? exchangeCurrency : 'Search for currencies...'}
+                onChange={(e) => setValue(e.target.value)}
+                value={value}
+              />
+              <ul id='currency-list' style={value != '' ? {visibility: 'visible'} : {visibility: 'hidden'}}>
+                {React.Children.toArray(children).filter(
+                  (child) =>
+                    !value || child.props.children.toLowerCase().includes(value),
+                )}
+              </ul>
+            </div>
+          );
+        },
+      );
+
+ 
 
 
   return (
     <div className='homepage-container'>
-        <div id='header'>
-            <img src={logo} id='main-logo' />
-            <h1 id='main-title'>Exchange It</h1>
+        <div className='header'>
+          <img src={logo} id='main-logo' />
+          <h1 id='main-title'>Exchange It</h1>
         </div>
 
         <div className='currency-search'>
@@ -99,27 +134,12 @@ const HomePage = () => {
             </Dropdown.Menu>
         </Dropdown>
 
-        <div className='exchange-info'>
-            <div className='conversion-header'>
-              <h4>{initialCurrency != '' ? initialCurrency : '‎'}</h4>
-              <img className='right-arrow' src={rightArrow} /> 
-              <h4>{exchangeCurrency != '' ? exchangeCurrency : '‎'}</h4>
-            </div>
-            <form onSubmit={(e) => {
-                e.preventDefault()
-                exchangeMoney(tradeAmount)
-                
-                
-            }}>
-            <input placeholder='Amount of currency' className='currency-amount-input' type='text' onChange={e => tradeAmount = e.target.value}/>
-            <button><img src={transferIcon} /></button>
-            {newData != null ? <p>Exchange Rate: {newData.info.rate}</p> : <p>Exchange Rate: 0</p>}
-            {newData != null ? <p>Amount Recieved: {newData.result}</p> : <p>Amount Recieved: 0</p>}
-            </form>
-        </div>
 
-        <Dropdown>
-            <Dropdown.Menu as={CustomMenu} show='true'>
+              <img className='right-arrow' src={rightArrow} /> 
+
+
+          <Dropdown>
+            <Dropdown.Menu as={CustomMenu2} show='true'>
                 <Dropdown.Item eventKey="1" id='USD' onClick={e => setExchangeCurrency(e.target.id)}>US Dollar ( USD )</Dropdown.Item>
                 <Dropdown.Item eventKey="2" id='EUR' onClick={e => setExchangeCurrency(e.target.id)}>Euro ( EUR )</Dropdown.Item>
                 <Dropdown.Item eventKey="3" id='GBP' onClick={e => setExchangeCurrency(e.target.id)}>Pound Sterling ( GBP )</Dropdown.Item>
@@ -133,6 +153,21 @@ const HomePage = () => {
             </Dropdown.Menu>
         </Dropdown>
         </div>
+
+        <div className='exchange-info'>
+            <form onSubmit={(e) => {
+                e.preventDefault()
+                exchangeMoney()
+                
+
+            }}>
+            <input placeholder='Amount of currency...' value={tradeAmount} className='currency-amount-input' type='text' onChange={e => setTradeAmount(e.target.value)}/>
+            <button id='btn'><img src={transferIcon} /></button>
+            </form>
+
+        </div>
+
+        {showModal ? <Modal data={newData} setShowModal={setShowModal}/> : ''}
     </div>
   )
 }
