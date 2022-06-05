@@ -21,9 +21,9 @@ const HomePage = () => {
 
     // for logging the data object
 
-    // useEffect(() => {
-    //   console.log(newData)
-    // },[newData])
+    useEffect(() => {
+      console.log(newData)
+    },[newData])
 
 
 
@@ -167,7 +167,7 @@ const HomePage = () => {
 
         </div>
 
-        {showModal ? <Modal data={newData} setShowModal={setShowModal}/> : ''}
+        {showModal ? <Modal data={newData} setShowModal={setShowModal} showModal={showModal}/> : ''}
     </div>
   )
 }

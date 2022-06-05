@@ -21,6 +21,7 @@
     align-items: center;
     width: fit-content;
     margin: 0 auto;
+    padding-top: 5vh;
     
     
 }
@@ -54,7 +55,7 @@
 
 .dropdown input:focus {
     transition: 0.5s;
-    box-shadow: 10px 10px rgba(0, 0, 0, 0.26);
+    box-shadow: 2px 10px rgba(0, 0, 0, 0.26);
 }
 
 .dropdown-item:hover {
@@ -109,7 +110,7 @@ form {
     align-items: center;
     position: absolute; 
     width: 100vw;
-    bottom: 30vh;
+    bottom: 25vh;
 
   
 
