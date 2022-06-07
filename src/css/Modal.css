@@ -14,7 +14,8 @@
     flex-direction: column;
     background: linear-gradient(90deg, #11CCF8 50%,  #2289FA 50%);
     height: 55vh;
-    width: 50vw;
+/*     width: 50vw; */
+    width: fit-content;
     position: absolute;
     top: 25vh;
     left: 25vw;
