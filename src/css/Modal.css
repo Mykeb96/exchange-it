@@ -1,7 +1,4 @@
 .modal-background {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100vw;
     height: 100vh;
     background: rgba(0, 0, 0, 0.788);
@@ -22,6 +19,7 @@
     position: absolute;
     top: 25vh;
     left: 25vw;
+    margin: 0 auto;
     border: 6px outset rgb(159, 233, 255);
     box-shadow: 20px 20px rgba(0, 0, 0, 0.411);
     z-index: 2;
